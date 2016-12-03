@@ -4,10 +4,12 @@
 }
 
 #drop_zone{
- width: 161%;
- margin-left: -30%;
+ width: 500px;
+ /*margin-left: -30%;*/
  background-color: rgba(0,0,0,.8);
  padding: 10px;
+ text-align: center;
+ margin: 0 auto;
 }
 
 .footer {

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simmons 7Kreator">
+    <meta name="author" content="Fernando Trujano">
+    <link rel="icon" href="http://simmons-dev.mit.edu/bootstrap/favicon.ico">
+
+    <title>Simmons 7Kreator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://simmons-dev.mit.edu/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="7Kreator.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img class="masthead-img" src="http://simmons-dev.mit.edu/bootstrap/assets/img/logo_circle.png">
+            SIMMONS/<span class="sub">7Kreator</span>
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <!-- <li class="active"><a href="#">Home</a></li> -->
+            <!-- <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li> -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container">
+
+      <div id="context-menu">
+        <ul class="dropdown-menu" role="menu">
+            <li><a id="back" tabindex="-1">Send to back</a></li>
+            <li><a id="front" tabindex="-1">Bring to front</a></li>
+            <li><a id="copy" tabindex="-1">Copy</a></li>
+            <li><a id="paste" tabindex="-1">Paste</a></li>
+            <li><a id="delete" tabindex="-1">Delete</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h1>7Kreator</h1>
+        <p class="lead">Easily create images to be displayed on the 7K.   <button type="button" class="btn btn-lg btn-primary" id="submit">Download</button>  <br> </p>
+      </div>
+
+      <div id="drop_zone" data-toggle="context" >
+        <div style="display:none!important"> <canvas id="c-full" width="7280" height="1920" ></canvas> </div>
+        <canvas id="c" width="1820" height="480"></canvas> <!-- Using smaller size (for now) for performance -->
+      </div>
+
+    </div><!-- /.container -->
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted" style="margin: 20px">By trujano</p>
+      </div>
+    </footer>
+    <script src='https://code.jquery.com/jquery-1.11.2.min.js'> </script>
+    <script src="http://simmons-dev.mit.edu/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+
+
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'> </script>
+
+  <script src='js/bootstrap-contextmenu.js'> </script>
+
+  <script src='js/7Kreator.js'> </script>
+
+  <script>
+    //Right click Menu
+    $('#drop_zone').contextmenu({target: '#context-menu',});
+  </script>
+
+</html>
+
+
+
+

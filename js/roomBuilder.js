@@ -1,32 +1,68 @@
 var canvas  = new fabric.Canvas('c');
 $(document).ready(function(){
    console.log("Ready")
-   canvas.setOverlayImage('1022.png', canvas.renderAll.bind(canvas), {
-    left: 230,
-    top: 10,
-    scaleX: 1.5,
-    scaleY: 1.5,
-    opacity: 1
+
+   $("#furniture").imagesLoaded({}, function() {
+     setRoom('733', "double")
    });
+
 });
 
-$("img.furniture").load(function(e) {
-  console.log(canvas.getObjects().length)
-   var image = new fabric.Image(e.target, {
-     left: Math.floor(canvas.getObjects().length / 4) * 110,
-     top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/4)*110*4),
-     opacity: 0.85,
-     lockScalingX: true,
-     lockScalingY: true
-   })
-   canvas.add(image);
-   canvas.bringToFront(image);
+function setRoom(roomNum, type) {
+  console.log("setting room");
+  console.log(type)
+  console.log(roomNum);
 
-   // Disable scaling controls
-   image.setControlsVisibility({
-     bl: false, br: false, mb: false, ml: false, mr: false, mt: false, tl: false, tr: false,
-     mtr: true
-   })
+  setOverlayImage('room-layouts/rooms/'+roomNum+'.png');
+  clearFurniture()
+  setFurniture(type)
+}
+
+function setOverlayImage(img) {
+  canvas.setOverlayImage(img, canvas.renderAll.bind(canvas), {
+   left: 230,
+   top: 10,
+   scaleX: 1.5,
+   scaleY: 1.5,
+   opacity: 1
+  });
+
+}
+
+function clearFurniture() {
+  canvas.clear();
+
+}
+
+function setFurniture(type) {
+  type = type=="double" ? "double,.single" : type;
+
+  $('img.furniture.'+ type).each(function(i,img) {
+    addFurniture(img)
+  });
+
+}
+
+function addFurniture(img) {
+  var image = new fabric.Image(img, {
+    left: Math.floor(canvas.getObjects().length / 4) * 110,
+    top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/4)*110*4),
+    opacity: 0.85,
+    lockScalingX: true,
+    lockScalingY: true
+  })
+  canvas.add(image);
+  canvas.bringToFront(image);
+
+  // Disable scaling controls
+  image.setControlsVisibility({
+    bl: false, br: false, mb: false, ml: false, mr: false, mt: false, tl: false, tr: false,
+    mtr: true
+  })
+}
+
+$("img.furniture").load(function(e) {
+  addFurniture(e.target);
 })
 
 currentX = 0; currentY = 0;
@@ -43,9 +79,9 @@ $(document).mousemove(function (e) {
 
 var selection = "bed";
 
-$("img.furniture").mousedown(function(e){
-  selection = e.target
-})
+// $("img.furniture").mousedown(function(e){
+//   selection = e.target
+// })
 
 // limit object moving to canvas (thanks stack overflow dude)
 canvas.on('object:moving', function (e) {
@@ -79,7 +115,7 @@ function download(url,name){
 }
 function downloadFabric(canvas,name){
   //  convert the canvas to a data url and download it.
-  download(canvas.toDataURL({multiplier: 4}),name+'.png' );
+  download(canvas.toDataURL(),name+'.png' );
 }
 
 $("#submit").click(function(){
@@ -103,7 +139,7 @@ $("#submit").click(function(){
     //   })
     // }
 
-    console.log(canvas.toDataURL({multiplier: 4}))
+    // console.log(canvas.toDataURL({multiplier: 4}))
     downloadFabric(canvas,'test');
 });
 

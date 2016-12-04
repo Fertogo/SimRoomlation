@@ -13,6 +13,9 @@
     <!-- Bootstrap core CSS -->
     <link href="http://simmons-dev.mit.edu/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="simRoomlation.css" rel="stylesheet">
+    <link href="typeahead.css" rel="stylesheet">
+
+
 
   </head>
 
@@ -57,21 +60,31 @@
         <p class="lead">Design your room. <button type="button" class="btn btn-lg btn-primary" id="submit">Download</button>  <br> </p>
         <!-- <img class="furniture" id="bed1" src="http://lorempixel.com/200/200" /> -->
         <!-- <div id="toolbar" style="height:110px"> -->
-          <img hidden class="furniture" id="bed1" src="http://lorempixel.com/100/100" />
-          <img hidden class="furniture" id="bed2" src="http://lorempixel.com/100/100" />
-          <img hidden class="furniture" id="bed3" src="http://lorempixel.com/100/100" />
-          <img hidden class="furniture" id="bed3" src="http://lorempixel.com/100/100" />
-          <img hidden class="furniture" id="bed3" src="http://lorempixel.com/100/100" />
-          <img hidden class="furniture" id="bed3" src="http://lorempixel.com/100/100" />
-          <img hidden class="furniture" id="bed3" src="http://lorempixel.com/100/100" />
+        <div id="furniture">
+          <!-- <img hidden class="furniture double" id="bed1" src="room-layouts/furniture/bed.png" /> -->
+          <img hidden class="furniture double" id="bed2" src="http://lorempixel.com/100/100" />
+          <img hidden class="furniture double" id="bed3" src="http://lorempixel.com/100/100" />
+          <img hidden class="furniture double" id="bed3" src="http://lorempixel.com/100/100" />
+          <img hidden class="furniture single" id="bed3" src="http://lorempixel.com/100/100" />
+          <img hidden class="furniture single" id="bed3" src="http://lorempixel.com/100/100" />
+          <img hidden class="furniture single" id="bed3" src="http://lorempixel.com/100/100" />
+        </div>
 
         <!-- </div> -->
 
+        <form class="form-inline">
+          <div class="form-group">
+            <label>My room is: </label>
+            <input type="text" id="roomNum" class="typeahead" placeholder="733">
 
+          </div>
+
+<!--           <button type="submit" class="btn btn-default">Send invitation</button> -->
+        </form>
       </div>
 
       <div id="drop_zone" data-toggle="context" >
-        <canvas id="c" width="680" height="480"></canvas>
+        <canvas id="c" width="780" height="580"></canvas>
       </div>
 
     </div><!-- /.container -->
@@ -91,7 +104,13 @@
 
   <script src='js/bootstrap-contextmenu.js'> </script>
 
+  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
   <script src='js/roomBuilder.js'> </script>
+  <script src='js/typeahead.js'> </script>
+  <script src='js/rooms.js'> </script>
+
+
+
 
   <script>
     //Right click Menu

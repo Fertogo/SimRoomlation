@@ -1,24 +1,31 @@
 var canvas  = new fabric.Canvas('c');
 $(document).ready(function(){
-  console.log("Ready")
- canvas.setOverlayImage('733.png', canvas.renderAll.bind(canvas), {
-  left: 0,
-  top: 0,
-  scaleX: 3,
-  scaleY: 3,
-  opacity: .3
- });
+   console.log("Ready")
+   canvas.setOverlayImage('1022.png', canvas.renderAll.bind(canvas), {
+    left: 230,
+    top: 10,
+    scaleX: 1.5,
+    scaleY: 1.5,
+    opacity: 1
+   });
 });
 
-// $("img.furniture").load(function(e) {
+$("img.furniture").load(function(e) {
+  console.log(canvas.getObjects().length)
+   var image = new fabric.Image(e.target, {
+     left: Math.floor(canvas.getObjects().length / 4) * 110,
+     top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/4)*110*4),
+     opacity: 0.85
+   })
+   canvas.add(image);
+   canvas.bringToFront(image);
 
-//    var image = new fabric.Image(e.target, {
-//      left: 728,
-//      top: 198,
-//      opacity: 0.85
-//    })
-//    canvas.add(image);
-// })
+   // Disable scaling controls
+   image.setControlsVisibility({
+     bl: false, br: false, mb: false, ml: false, mr: false, mt: false, tl: false, tr: false,
+     mtr: true
+   })
+})
 
 currentX = 0; currentY = 0;
 X_OFFSET = 245; Y_OFFSET = 245;
@@ -133,6 +140,8 @@ $("#submit").click(function(){
 
 $("#back").click(sendToBack);
 $("#front").click(bringToFront);
+
+
 
 
 /*

@@ -27,6 +27,16 @@ function setOverlayImage(img) {
    opacity: 1
   });
 
+
+
+  setTimeout(function(){
+    var width = canvas.overlayImage.width*1.5 + 220;
+    width = width < 780 ? 780 : width;
+    $("#drop_zone").css("width", width + 20)
+    canvas.setWidth(width)
+    canvas.setHeight(canvas.overlayImage.height*1.5+ 20);
+  }, 100)
+
 }
 
 function clearFurniture() {
@@ -44,9 +54,10 @@ function setFurniture(type) {
 }
 
 function addFurniture(img) {
+  console.log(img)
   var image = new fabric.Image(img, {
-    left: Math.floor(canvas.getObjects().length / 4) * 110,
-    top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/4)*110*4),
+    left: Math.floor(canvas.getObjects().length / 5) * 110,
+    top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/5)*110*5),
     opacity: 0.85,
     scaleX: 1.0, // note that furniture images are 1.5x to scale than room layouts
     scaleY: 1.0,

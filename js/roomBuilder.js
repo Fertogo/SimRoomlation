@@ -32,7 +32,7 @@ function setOverlayImage(img) {
   setTimeout(function(){
     var width = canvas.overlayImage.width*1.5 + 220;
     width = width < 780 ? 780 : width;
-    $("#drop_zone").css("width", width + 20)
+    $("#drop_zone").css("width", width + 10)
     canvas.setWidth(width)
     canvas.setHeight(canvas.overlayImage.height*1.5+ 20);
   }, 100)

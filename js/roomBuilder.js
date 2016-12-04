@@ -48,6 +48,8 @@ function addFurniture(img) {
     left: Math.floor(canvas.getObjects().length / 4) * 110,
     top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/4)*110*4),
     opacity: 0.85,
+    scaleX: 1.0, // note that furniture images are 1.5x to scale than room layouts
+    scaleY: 1.0,
     lockScalingX: true,
     lockScalingY: true
   })

@@ -15,7 +15,9 @@ $("img.furniture").load(function(e) {
    var image = new fabric.Image(e.target, {
      left: Math.floor(canvas.getObjects().length / 4) * 110,
      top: canvas.getObjects().length * 110 - (Math.floor(canvas.getObjects().length/4)*110*4),
-     opacity: 0.85
+     opacity: 0.85,
+     lockScalingX: true,
+     lockScalingY: true
    })
    canvas.add(image);
    canvas.bringToFront(image);
@@ -65,43 +67,10 @@ canvas.on('object:moving', function (e) {
         }
 });
 
-function handleFileSelect(evt) {
 
-  evt.stopPropagation();
-  evt.preventDefault();
-  console.log(evt.pageX-X_OFFSET)
-  console.log(evt.pageY-Y_OFFSET)
 
-  var image = new fabric.Image(selection, {
-    left: evt.pageX-X_OFFSET,
-    top: evt.pageY-Y_OFFSET,
-    opacity: 0.85,
-    lockScalingX: true,
-    lockScalingY: true
-  })
-  canvas.add(image);
-  canvas.bringToFront(image);
 
-  // Disable scaling controls
-  image.setControlsVisibility({
-    bl: false, br: false, mb: false, ml: false, mr: false, mt: false, tl: false, tr: false,
-    mtr: true
-  })
 
-  $(selection).remove()
-
-}
-
-function handleDragOver(evt) {
-  evt.stopPropagation();
-  evt.preventDefault();
-  evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-}
-
-// Setup the drop listeners.
-var dropZone = document.getElementById('drop_zone');
-dropZone.addEventListener('dragover', handleDragOver, false);
-dropZone.addEventListener('drop', handleFileSelect, false);
 
 
 function download(url,name){
@@ -135,7 +104,7 @@ $("#submit").click(function(){
     // }
 
     console.log(canvas.toDataURL({multiplier: 4}))
-    //downloadFabric(canvas,'test');
+    downloadFabric(canvas,'test');
 });
 
 $("#back").click(sendToBack);

@@ -45,9 +45,11 @@ function clearFurniture() {
 }
 
 function setFurniture(type) {
-  type = type=="double" ? "double,.single" : type;
+  selector  = "single"
+  if (type == "double") selector += ",.double"
+  if (type == "triple") selector += ",.double,.triple"
 
-  $('img.furniture.'+ type).each(function(i,img) {
+  $('img.furniture.'+ selector).each(function(i,img) {
     addFurniture(img)
   });
 

@@ -27,7 +27,7 @@ $('.typeahead').typeahead({
   minLength: 1,
 
 },
-
+{
   name: 'rooms',
   source: substringMatcher(allRooms)
 });

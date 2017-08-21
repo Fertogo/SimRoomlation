@@ -3,7 +3,7 @@ $(document).ready(function(){
    console.log("Ready")
 
    $("#furniture").imagesLoaded({}, function() {
-     setRoom('733', "double")
+     setRoom('733', "triple")
    });
 
 });
